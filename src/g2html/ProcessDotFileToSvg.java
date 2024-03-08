@@ -32,7 +32,7 @@ public class ProcessDotFileToSvg implements Runnable {
 	// test if the parameter can be found by the runtime
 	static boolean testDotPath(String dot){
 		try {
-			Process p = Runtime.getRuntime().exec(dot + " -V");
+			Process p = new ProcessBuilder("dot", "-V").start();
 			return p.waitFor()==0;
 		} catch (IOException | InterruptedException ignored) {
 		}
